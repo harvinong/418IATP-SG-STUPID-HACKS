@@ -1,4 +1,4 @@
-const Person = require('../models/person-model');
+const Person = require('../models/model');
 
 exports.homeGet = (req, res) => {
     const person_arr = req.session.person_arr || [];
