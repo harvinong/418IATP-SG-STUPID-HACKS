@@ -4,15 +4,21 @@
     <title>LinkedOUT: are you fr??</title>
     <link rel="stylesheet" href="../public/style.css">
 </head>
-<body style="display: flex; justify-content: center;">
-    <div style="align-content: center;">
-        <h1>LinkedOUT: are you fr??</h1>
-        <p>Welcome to LinkedOUT! A game where you attempt to guess whether a linkedIn post is fake or genuinely batshit insane.</p>
-
-        <ul>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
-        </ul>
+<body>
+    <div style="display: flex; justify-content: center;">
+        <%- include('common/header') %>
+    </div>
+    
+    <div style="display: flex; justify-content: center; align-items: center;">
+            <div style="text-align: center;">
+            <h1>LinkedOUT: are you fr??</h1>
+            <p>Welcome to LinkedOUT! A game where you attempt to guess whether a linkedIn post is fake or genuinely batshit insane.</p>
+                <a href="/game">Play Game Now!</a><br>
+                <a href="/login">Login</a></li><br>
+                <a href="/register">Register</a>
+                <br><br>
+            <%- include('common/footer') %>
+        </div>
     </div>
 </body>
 </html>
