@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter PersonModel Details</title>
+</head>
+<body>
+    <form method="post" action="/">
+        Name: <input type="text" name="name"/> <br/>
+        Age: <input type="number" name="age"/> <br/>
+        <input type="submit" value="Next" name="next"/><br/>
+        <input type="submit" value="Find Oldest and Reset" name="find_oldest"/>
+    </form>
+
+    <% if (person_arr && person_arr.length > 0) { %>
+        <strong>Persons entered so far</strong>
+        <br/><br/>
+        <table border='1'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% person_arr.forEach(person => { %>
+                    <tr>
+                        <td><%= person.getName() %></td>
+                        <td><%= person.getAge() %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } %>
+</body>
+</html>
