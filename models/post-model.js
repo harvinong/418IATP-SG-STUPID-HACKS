@@ -19,8 +19,8 @@ exports.addRealPost = function(scrapedPost) {
         text: scrapedPost.text,
         link: scrapedPost.link,
         isReal: true
-    }
-    return postModel.create(newPost)
+    };
+    return postModel.create(newPost);
 }
 
 exports.addFakePost = function(text) {
@@ -28,8 +28,8 @@ exports.addFakePost = function(text) {
         text: text,
         link: "fake",
         isReal: false
-    }
-    return postModel.create(newPost)
+    };
+    return postModel.create(newPost);
 }
 
 exports.addRealSightPost = function(text, link) {

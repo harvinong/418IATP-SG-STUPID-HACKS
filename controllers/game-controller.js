@@ -1,9 +1,9 @@
-const postScraper = require("../scrape/post-scraper")
-const postModel = require("../models/post-model")
+const postScraper = require("../scrape/post-scraper");
+const postModel = require("../models/post-model");
 
 exports.gameGet = async (req,res) => {
-    let post = await postModel.getRandomPost()
-    console.log(post)
+    let post = await postModel.getRandomPost();
+    console.log(post);
 
     const playerStats = req.session.playerStats || {
         points: 0
@@ -18,7 +18,7 @@ exports.gameGet = async (req,res) => {
 };
 
 exports.gamePost = (req,res) => {
-    if (req.body.pass) {return res.redirect("/game/");}
+    if (req.body.pass) {return res.redirect("/game/");};
 
     if (req.session.playerStats) {
         req.session.playerStats.points += 1;
@@ -34,12 +34,12 @@ exports.gamePost = (req,res) => {
         link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         success: 420,
         fail: 69
-    }
+    };
     
     let outcome = 'fail';
     if (req.body.real && placeholderPost.isReal) {
         outcome = 'success';
-    }
+    };
 
     const options = {
         post: placeholderPost,
