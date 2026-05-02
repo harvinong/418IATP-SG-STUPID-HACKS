@@ -57,22 +57,32 @@ exports.gamePost = (req,res) => {
     res.render("game", options);
 };
 
-exports.addFakeGet = (req,res) => {res.send("addFakeGET not implemented");};
+// Fake ===
+exports.addFakeGet = async (req,res) => {
+    res.render("addFake");
+};
 
-exports.addFakePost = (req,res) => {res.send("addFakePOST not implemented");};
+exports.addFakePost = async (req,res) => {
+    let text = req.body.text;
+    
+    await postModel.addFakePost(text)
+    
+    res.render("addFake")
+};
 
+// Real === 
 exports.addRealGet = async (req,res) => {
     res.render("addReal");
 };
 
 exports.addRealPost = async (req,res) => {
-   let link = req.body.link;
+    let link = req.body.link;
 
-   let scrapedPost = await postScraper.scrapePost(link)
-   console.log(scrapedPost)
-
-   await postModel.addRealPost(scrapedPost)
-
-   res.render("addReal")
+    let scrapedPost = await postScraper.scrapePost(link)
+    console.log(scrapedPost)
+    
+    await postModel.addRealPost(scrapedPost)
+    
+    res.render("addReal")
 };
 

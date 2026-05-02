@@ -23,6 +23,15 @@ exports.addRealPost = function(scrapedPost) {
     return postModel.create(newPost)
 }
 
+exports.addFakePost = function(text) {
+    let newPost = {
+        text: text,
+        link: "fake",
+        isReal: false
+    }
+    return postModel.create(newPost)
+}
+
 exports.getRandomPost = function() {
   return postModel.aggregate([{ $sample: { size: 1 } }]);
 };
