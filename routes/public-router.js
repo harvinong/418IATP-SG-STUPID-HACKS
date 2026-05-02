@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Import Controllers
-const loginController = require('../controllers/loginController');
+const loginController = require('../controllers/login-controller');
 
 // Routes
 router.get("/", publicController.home);
