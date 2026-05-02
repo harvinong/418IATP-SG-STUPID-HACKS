@@ -1,23 +1,16 @@
 const postScraper = require("../scrape/postScraper")
 const postModel = require("../models/postModel")
 
-exports.gameGet = (req,res) => {
-
-    const placeholderPost = {
-        text: "I just had Wingstop today. So good! 🤤",
-        author: "Will B. Goodenough",
-        isReal: true,
-        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        success: 420,
-        fail: 69
-    }
+exports.gameGet = async (req,res) => {
+    let post = await postModel.getRandomPost()
+    console.log(post)
 
     const playerStats = req.session.playerStats || {
         points: 0
     };
 
     const options = {
-        post: placeholderPost,
+        post : post[0],
         playerStats,
         outcome: 'pass'
     };

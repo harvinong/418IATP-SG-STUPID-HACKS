@@ -10,8 +10,7 @@
     
     <h1>Game</h1>
     <p>You have <%= playerStats.points %> point<%= playerStats.points == 1? '': 's' %>!</p>
-    <fieldset>
-        <legend><%= post.author %></legend>
+    <fieldset>>
         <%= post.text %>
     </fieldset>
     <form action="/game/" method="post">
