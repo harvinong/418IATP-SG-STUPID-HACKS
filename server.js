@@ -33,7 +33,7 @@ server.use("/", baseRouter);
 // Database connection
 async function connectDB() {
   try {
-    await mongoose.connect(process.env.DB_MONGODB_URI);
+    await mongoose.connect(process.env.DB || process.env.DB_MONGODB_URI);
     console.log("MongoDB connected successfully");
   } catch (error) {
     console.error("MongoDB connection failed:", error.message);
