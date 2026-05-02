@@ -2,15 +2,36 @@
 <html lang="en">
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="../public/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
     <%- include('common/header') %>
+    <div class="wrapper">
+        <form action="/login" method="POST">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Username"
+                required>
+                <i class="bx bxs-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password"
+                required>
+                <i class="bx bxs-lock-alt"></i>
+            </div>
 
-    <form action="/login" method="POST">
-        <input type="text" name="username" placeholder="Username">
-        <input type="text" name="password" placeholder="Password">
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember me</label>
+            </div>
+
+            <div class="register-link">
+                <p>Don't have an account? <a href="#">Register!</a></p>
+            </div>
     </form>
+    </div>
 
     <%- include('common/footer') %>
+    
 </body>
 </html>
