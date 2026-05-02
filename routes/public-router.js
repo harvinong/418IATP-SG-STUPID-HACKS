@@ -8,5 +8,6 @@ const publicController = require('../controllers/public-controller');
 // Routes
 router.get("/", publicController.home);
 router.get("/login", loginController.login);
+router.get("/register", loginController.register);
 
 module.exports = router;
