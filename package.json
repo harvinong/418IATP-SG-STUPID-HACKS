@@ -1,7 +1,7 @@
 {
-  "name": "node-person-app",
+  "name": "person-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A project from \"418 I'm a teh poci\" for Singapore Stupid Hacks by Young Entrepreneurs Singapore (YES)",
   "main": "server.js",
   "scripts": {
     "start": "node --watch server.js"
@@ -9,6 +9,19 @@
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.19.2",
-    "express-session": "^1.18.0"
-  }
+    "express-session": "^1.18.0",
+    "puppeteer": "^24.42.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harvinong/418IATP-SG-STUPID-HACKS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/harvinong/418IATP-SG-STUPID-HACKS/issues"
+  },
+  "homepage": "https://github.com/harvinong/418IATP-SG-STUPID-HACKS#readme"
 }
