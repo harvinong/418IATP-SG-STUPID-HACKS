@@ -1,1 +1,1 @@
-exports.home = (req, res) => res.send(`418 I'm a Teh Poci <a href="/login">Login</a>`);
+exports.home = (req, res) => res.render("home");
