@@ -39,18 +39,17 @@
                 <div class="outcome-msg <%= outcome === 'success' ? 'outcome-success' : 'outcome-fail' %>">
                     <% if (outcome === 'success') { %>
                         You're cooking! 🔥🔥🔥 That was <%= post.isReal ? 'REAL' : 'FAKE' %>.
-                    <br> <a href="<%= post.link %>">Link</a> 
+                        <% if (post.link != "fake") { %>
+                            <br> <a href="<%= post.link %>">Link</a> 
+                        <% } %>
                     <% } else { %>
                         You're cooked! 🥀🥀🥀 That was <%= post.isReal ? 'REAL' : 'FAKE' %>.
-                    <br> <a href="<%= post.link %>">Link</a> 
+                        <% if (post.link != "fake") { %>
+                            <br> <a href="<%= post.link %>">Link</a> 
+                        <% } %>
                     <% } %>
                 </div>
 
-                <% if (post.link) { %>
-                    <div style="margin-bottom: 1rem;">
-                        <a href="<%= post.link %>" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">View Source</a>
-                    </div>
-                <% } %>
 
                 <div style="display: flex; gap: 1rem;">
                     <a href="/game" class="btn btn-primary">Next Post</a>
