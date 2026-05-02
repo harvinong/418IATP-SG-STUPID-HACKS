@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // Route
-const gameController = require("../controllers/gameController");
+const gameController = require("../controllers/game-controller");
 router.get("/", gameController.gameGet);
 
 router.get("/add-fake", gameController.addFakeGet);
