@@ -2,10 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 // Route
-const gameControllers = require("../controllers/gameControllers");
-router.get("/", gameControllers.gameGet);
-router.post("/", gameControllers.gamePost);
-router.get("/add-fake", gameControllers.addFakeGet);
-router.post("/add-fake", gameControllers.addFakePost);
+const gameController = require("../controllers/gameController");
+router.get("/", gameController.gameGet);
+
+router.get("/add-fake", gameController.addFakeGet);
+router.post("/add-fake", gameController.addFakePost);
+
+router.get("/add-real", gameController.addRealGet)
+router.post("/add-real", gameController.addRealPost)
 
 module.exports = router;
