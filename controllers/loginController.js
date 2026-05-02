@@ -1,5 +1,5 @@
 exports.login = (req, res) => {
-    res.send("LOGIN not implemented");
+    res.render("login", {error: null});
 }
 
 exports.register = (req, res) => {

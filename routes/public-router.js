@@ -3,9 +3,10 @@ const router = express.Router();
 
 // Import Controllers
 const loginController = require('../controllers/loginController');
+const publicController = require('../controllers/publicController')
 
 // Routes
 router.get("/", publicController.home);
-router.get("/login/", loginController.login);
+router.get("/login", loginController.login);
 
 module.exports = router;
