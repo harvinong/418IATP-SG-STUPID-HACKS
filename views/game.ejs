@@ -25,6 +25,10 @@
         <p style="color: red;">You're cooked! 🥀🥀🥀</p>
     <% } %>
 
+    <% if (outcome !== 'pass') { %>
+        <%= text.link %>
+    <% } %>
+    
     <%- include('common/footer') %>
 </body>
 </html>

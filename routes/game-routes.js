@@ -11,4 +11,7 @@ router.post("/add-fake", gameController.addFakePost);
 router.get("/add-real", gameController.addRealGet)
 router.post("/add-real", gameController.addRealPost)
 
+router.get("/saw-real", gameController.addSawRealGet)
+router.post("/saw-real", gameController.addSawRealPost)
+
 module.exports = router;
