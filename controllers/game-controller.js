@@ -17,32 +17,26 @@ exports.gameGet = async (req,res) => {
     res.render("game", options);
 };
 
-exports.gamePost = (req,res) => {
+exports.gamePost = async (req,res) => {
+    console.log("Posted");
     if (req.body.pass) {return res.redirect("/game/");};
+    const post = await postModel.getPostByID(req.body.postID);
 
-    if (req.session.playerStats) {
-        req.session.playerStats.points += 1;
-    } else {
-        req.session.playerStats = {points: 1};
+    // Initialize player statistics session
+    if (!req.session.playerStats) {
+        req.session.playerStats = {points: 0};
     }
-
-    
-    const placeholderPost = {
-        text: "I just had Wingstop today. So good! 🤤",
-        author: "Will B. Goodenough",
-        isReal: true,
-        link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        success: 420,
-        fail: 69
-    };
     
     let outcome = 'fail';
-    if (req.body.real && placeholderPost.isReal) {
+    const succOut = req.body.real && post.isReal;
+    const failOut = req.body.fake && !post.isReal;
+    if (succOut || failOut) {
         outcome = 'success';
+        req.session.playerStats.points += 1;
     };
 
     const options = {
-        post: placeholderPost,
+        post,
         playerStats: req.session.playerStats,
         outcome
     };

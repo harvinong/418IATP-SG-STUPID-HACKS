@@ -42,5 +42,9 @@ exports.addRealSightPost = function(text, link) {
 }
 
 exports.getRandomPost = function() {
-  return postModel.aggregate([{ $sample: { size: 1 } }]);
+    return postModel.aggregate([{ $sample: { size: 1 } }]);
 };
+
+exports.getPostByID = function(postID) {
+    return postModel.findById(postID);
+}

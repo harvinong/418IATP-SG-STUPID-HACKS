@@ -10,20 +10,25 @@
     
     <h1>Game</h1>
     <p>You have <%= playerStats.points %> point<%= playerStats.points == 1? '': 's' %>!</p>
-    <fieldset>>
-        <%= post.text %>
+    <fieldset>
+        <%= post.text.trim() %>
     </fieldset>
     <form action="/game/" method="post">
         <input type="hidden" name="postID" value="<%= post._id %>">
-        <input type="submit" name="real" value="Real">
-        <input type="submit" name="fake" value="Fake">
-        <input type="submit" name="pass" value="Pass">
+        <% const disabled = outcome === 'pass'? '': 'disabled' %>
+        <input type="submit" name="real" value="Real" <%= disabled %>>
+        <input type="submit" name="fake" value="Fake" <%= disabled %>>
+        <input type="submit" name="pass" value="Pass" <%= disabled %>>
+        <% if (outcome === 'success') { %>
+            <p style="color: lime;">You're cooking! 🔥🔥🔥</p>
+        <% } else if (outcome === 'fail') { %>
+            <p style="color: red;">You're cooked! 🥀🥀🥀</p>
+        <% } %>
+        <% if (outcome !== 'pass') { %>
+            <a href="/game">Next post</a>
+            <a href="/register">Save your progress</a>
+        <% } %>
     </form>
-    <% if (outcome === 'success') { %>
-        <p style="color: lime;">You're cooking! 🔥🔥🔥</p>
-    <% } else if (outcome === 'fail') { %>
-        <p style="color: red;">You're cooked! 🥀🥀🥀</p>
-    <% } %>
 
     <% if (outcome !== 'pass') { %>
         <%= text.link %>
