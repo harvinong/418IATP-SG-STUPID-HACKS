@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+</head>
+<body>
+    <h1>Game</h1>
+    <p>You have <%= playerStats.points %> point<%= playerStats.points == 1? '': 's' %>!</p>
+    <fieldset>
+        <legend><%= post.author %></legend>
+        <%= post.text %>
+    </fieldset>
+    <form action="/game/" method="post">
+        <input type="submit" name="real" value="Real">
+        <input type="submit" name="fake" value="Fake">
+        <input type="submit" name="pass" value="Pass">
+    </form>
+    <% if (outcome === 'success') { %>
+        <p style="color: lime;">You're cooking! 🔥🔥🔥</p>
+    <% } else if (outcome === 'fail') { %>
+        <p style="color: red;">You're cooked! 🥀🥀🥀</p>
+    <% } %>
+</body>
+</html>
