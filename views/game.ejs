@@ -38,9 +38,11 @@
             <% } else { %>
                 <div class="outcome-msg <%= outcome === 'success' ? 'outcome-success' : 'outcome-fail' %>">
                     <% if (outcome === 'success') { %>
-                        You're cooking! 🔥🔥🔥 That was <%= post.link ? 'REAL' : 'FAKE' %>.
+                        You're cooking! 🔥🔥🔥 That was <%= post.isReal ? 'REAL' : 'FAKE' %>.
+                    <br> <a href="<%= post.link %>">Link</a> 
                     <% } else { %>
-                        You're cooked! 🥀🥀🥀 That was <%= post.link ? 'REAL' : 'FAKE' %>.
+                        You're cooked! 🥀🥀🥀 That was <%= post.isReal ? 'REAL' : 'FAKE' %>.
+                    <br> <a href="<%= post.link %>">Link</a> 
                     <% } %>
                 </div>
 
