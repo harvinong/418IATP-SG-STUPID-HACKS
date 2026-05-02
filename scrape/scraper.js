@@ -4,26 +4,8 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
 
-const OUTPUT_FILE = path.join(__dirname, "posts.json");
-
-// Helper ===
-function loadExistingPosts() {
-  if (!fs.existsSync(OUTPUT_FILE)) {
-    return [];
-  }
-
-  const raw = fs.readFileSync(OUTPUT_FILE, "utf-8");
-
-  return JSON.parse(raw);
-}
-
-function savePosts(posts) {
-  const json = JSON.stringify(posts, null, 2);
-  fs.writeFileSync(OUTPUT_FILE, json, "utf-8");
-}
-
 // Core ===
-async function scrapePost(url) {
+async function getPost(url) {
   console.log(`Scraping: ${url}`);
 
   const browser = await puppeteer.launch({
@@ -50,11 +32,8 @@ async function scrapePost(url) {
       document.querySelector(".attributed-text-segment-list__content") ||
       document.querySelector(".feed-shared-text");
     
-    const authorEl = document.querySelector(".update-components-actor__name span[aria-hidden='true']");
-
     return {
       text:   textEl?.innerText?.trim()   ?? null,
-      author: authorEl?.innerText?.trim() ?? null,
     };
   });
 
@@ -67,34 +46,25 @@ async function scrapePost(url) {
   console.log(`Got post by: ${data.author ?? "Unknown"}`);
 
   return {
-    url,
-    author: data.author ?? "Unknown",
-    text:   data.text,
-    scrapedAt: new Date().toISOString(), // ISO 8601 timestamp so we know when it was scraped
+    link: url,
+    text: data.text,
   };
 }
 
 // Main ===
-exports.scrape = (url) => {
+exports.scrapePost = async (url) => {
   if (!url || !url.includes("linkedin.com")) {
     console.warn("Warning: URL doesn't look like a LinkedIn link or no link at all!");
     process.exit(1);
   }
 
-  const existingPosts = loadExistingPosts();
-  const alreadySaved = existingPosts.some((p) => p.url === url);
-  if (alreadySaved) {
-    console.log("⏭This URL is already in posts.json — skipping.");
-    process.exit(0);
+  const scrapePost = await getPost(url);
+  console.log(scrapePost)
+  const newPost = {
+    text: scrapePost.text,
+    link: scrapePost.link,
+    isReal: true,
   }
 
-  const post = await scrapePost(url);
-
-  // Add the new post to the front of the array (newest first)
-  const updatedPosts = [post, ...existingPosts];
-
-  savePosts(updatedPosts);
-
-  console.log(`\n💾 Saved! posts.json now has ${updatedPosts.length} post(s).`);
-  console.log(`\nPost preview:\n"${post.text.slice(0, 120)}..."\n`);
+  return newPost
 }

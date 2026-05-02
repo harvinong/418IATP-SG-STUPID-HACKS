@@ -4,12 +4,15 @@
   "description": "A project from \"418 I'm a teh poci\" for Singapore Stupid Hacks by Young Entrepreneurs Singapore (YES)",
   "main": "server.js",
   "scripts": {
-    "start": "node --watch server.js"
+    "start": "nodemon server.js"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
+    "mongoose": "^9.6.1",
+    "nodemon": "^3.1.14",
     "puppeteer": "^24.42.0"
   },
   "repository": {
