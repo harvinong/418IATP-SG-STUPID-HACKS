@@ -11,8 +11,17 @@ const postSchema = new mongoose.Schema({
 const postModel = mongoose.model('post', postSchema, 'post');
 
 exports.addPost = function(newPost) {
-  return postModel.create(newPost);
+    return postModel.create(newPost);
 };
+
+exports.addRealPost = function(scrapedPost) {
+    let newPost = {
+        text: scrapedPost.text,
+        link: scrapedPost.link,
+        isReal: true
+    }
+    return postModel.create(newPost)
+}
 
 exports.getRandomPost = function() {
   return postModel.aggregate([{ $sample: { size: 1 } }]);

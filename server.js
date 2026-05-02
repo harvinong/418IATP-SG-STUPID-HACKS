@@ -16,7 +16,6 @@ server.set('view engine', 'ejs');
 server.set("views", path.join(__dirname, "views"));
 
 // session ID
-
 const secret = process.env.SECRET;
 server.use(session({
   secret: secret, // sign the session ID cookie. should be a long, random, and secure string, preferably stored in an environment variable
