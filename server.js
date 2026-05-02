@@ -33,7 +33,7 @@ server.use((req, res, next) => {
 });
 
 // Routes
-const peopleRoutes = require("./routes/people-routes");
+const peopleRoutes = require("./routes/-routes");
 server.use('/', peopleRoutes);
 
 server.listen(port, hostname,() => {
