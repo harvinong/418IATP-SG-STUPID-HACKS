@@ -32,6 +32,15 @@ exports.addFakePost = function(text) {
     return postModel.create(newPost)
 }
 
+exports.addRealSightPost = function(text, link) {
+    let newPost = {
+        text: text,
+        link: link,
+        isReal: true
+    }
+    return postModel.create(newPost)
+}
+
 exports.getRandomPost = function() {
   return postModel.aggregate([{ $sample: { size: 1 } }]);
 };

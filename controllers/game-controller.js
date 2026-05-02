@@ -79,3 +79,16 @@ exports.addRealPost = async (req,res) => {
     res.render("add-real");
 };
 
+// Saw real ===
+exports.addSawRealGet = async (req,res) => {
+    res.render("saw-real");
+};
+
+exports.addSawRealPost = async (req,res) => {
+    let link = req.body.link;
+    let text = req.body.text;
+
+    await postModel.addRealSightPost(text, link);
+    
+    res.render("saw-real");
+};
