@@ -14,6 +14,7 @@
         <%= post.text %>
     </fieldset>
     <form action="/game/" method="post">
+        <input type="hidden" name="postID" value="<%= post._id %>">
         <input type="submit" name="real" value="Real">
         <input type="submit" name="fake" value="Fake">
         <input type="submit" name="pass" value="Pass">

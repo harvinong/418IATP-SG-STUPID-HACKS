@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Import Controllers
 const loginController = require('../controllers/login-controller');
-
+const publicController = require('../controllers/public-controller');
 // Routes
 router.get("/", publicController.home);
 router.get("/login/", loginController.login);

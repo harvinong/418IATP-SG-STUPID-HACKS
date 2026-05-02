@@ -1,5 +1,5 @@
-const postScraper = require("../scrape/postScraper")
-const postModel = require("../models/postModel")
+const postScraper = require("../scrape/post-scraper")
+const postModel = require("../models/post-model")
 
 exports.gameGet = async (req,res) => {
     let post = await postModel.getRandomPost()
