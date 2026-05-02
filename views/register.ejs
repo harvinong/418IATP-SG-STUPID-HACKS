@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>LinkedOUT: are you fr??</title>
-    <link rel="stylesheet" href="../public/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join LinkedOUT</title>
+    <link rel="stylesheet" href="/style.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
     <%- include('common/header') %>
+    
     <div class="wrapper">
-        <form action="/login" method="POST">
+        <form action="/register" method="POST">
             <h1>Register</h1>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Make the most of your professional life</p>
+            
             <div class="input-box">
-                <input type="text" placeholder="Username"
-                required>
+                <input type="text" name="username" placeholder="Username" required>
                 <i class="bx bxs-user"></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Password"
-                required>
+                <input type="password" name="password" placeholder="Password" required>
                 <i class="bx bxs-lock-alt"></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Confirm Password"
-                required>
+                <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
                 <i class="bx bxs-lock-alt"></i>
             </div>
 
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Agree & Join</button>
+
             <div class="register-link">
-                <p>Already have an account? <a href="../login">Login!</a></p>
+                <p>Already on LinkedOUT? <a href="/login">Sign in</a></p>
             </div>
-    </form>
+        </form>
     </div>
 
     <%- include('common/footer') %>
-    
 </body>
 </html>

@@ -2,18 +2,19 @@
 <% const pagelink = {
     Home: "/",
     "Play Game": "/game/",
-    "Add Fake Post": "/game/add-fake",
-    "Add Real Post": "/game/add-real",
-    "Saw Real Post": "/game/saw-real"
+    "Add Fake": "/game/add-fake",
+    "Add Real": "/game/add-real",
+    "Saw Real": "/game/saw-real"
 } %>
 
-<%# HTML Elements %>
 <header>
     <nav>
-         | 
-        <% for (const page in pagelink) { %>
-            <a href="<%= pagelink[page] %>"><%= page %></a> | 
-        <% } %>
+        <a href="/" class="nav-logo">Linked<span>OUT</span></a>
+        <ul class="nav-links">
+            <% for (const page in pagelink) { %>
+                <li><a href="<%= pagelink[page] %>"><%= page %></a></li>
+            <% } %>
+        </ul>
     </nav>
-    <hr>
 </header>
+<main>

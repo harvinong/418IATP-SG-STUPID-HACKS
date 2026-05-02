@@ -3,37 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
+    <title>Game | LinkedOUT</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <%- include('common/header') %>
     
-    <h1>Game</h1>
-    <p>You have <%= playerStats.points %> point<%= playerStats.points == 1? '': 's' %>!</p>
-    <fieldset>
-        <%= post.text.trim() %>
-    </fieldset>
-    <form action="/game/" method="post">
-        <input type="hidden" name="postID" value="<%= post._id %>">
-        <% const disabled = outcome === 'pass'? '': 'disabled' %>
-        <input type="submit" name="real" value="Real" <%= disabled %>>
-        <input type="submit" name="fake" value="Fake" <%= disabled %>>
-        <input type="submit" name="pass" value="Pass" <%= disabled %>>
-        <% if (outcome === 'success') { %>
-            <p style="color: lime;">You're cooking! 🔥🔥🔥</p>
-        <% } else if (outcome === 'fail') { %>
-            <p style="color: red;">You're cooked! 🥀🥀🥀</p>
-        <% } %>
-        <% if (outcome !== 'pass') { %>
-            <a href="/game">Next post</a>
-            <a href="/register">Save your progress</a>
-        <% } %>
-    </form>
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h1>Game</h1>
+            <div class="card" style="margin-bottom: 0; padding: 0.5rem 1rem; font-weight: 700;">
+                Score: <span style="color: var(--primary-color);"><%= playerStats.points %></span>
+            </div>
+        </div>
 
-    <% if (outcome !== 'pass') { %>
-        <%= post.link %>
-    <% } %>
-    <img src="/linkedOUT.png" width="500">
+        <div class="card post-card">
+            <div class="post-header">
+                <div class="avatar"></div>
+                <div>
+                    <div class="post-author">Anonymous LinkedIn User</div>
+                    <div class="post-meta">Thought Leader • 1st • 2h</div>
+                </div>
+            </div>
+            
+            <div class="post-content"><%= post.text.trim() %></div>
+
+            <% if (outcome === 'pass') { %>
+                <form action="/game/" method="post" class="post-actions">
+                    <input type="hidden" name="postID" value="<%= post._id %>">
+                    <button type="submit" name="real" value="Real" class="btn btn-outline">👍 Real</button>
+                    <button type="submit" name="fake" value="Fake" class="btn btn-outline">🤔 Fake</button>
+                    <button type="submit" name="pass" value="Pass" class="btn btn-outline">⏭️ Pass</button>
+                </form>
+            <% } else { %>
+                <div class="outcome-msg <%= outcome === 'success' ? 'outcome-success' : 'outcome-fail' %>">
+                    <% if (outcome === 'success') { %>
+                        You're cooking! 🔥🔥🔥 That was <%= post.link ? 'REAL' : 'FAKE' %>.
+                    <% } else { %>
+                        You're cooked! 🥀🥀🥀 That was <%= post.link ? 'REAL' : 'FAKE' %>.
+                    <% } %>
+                </div>
+
+                <% if (post.link) { %>
+                    <div style="margin-bottom: 1rem;">
+                        <a href="<%= post.link %>" target="_blank" class="btn btn-outline" style="font-size: 0.8rem;">View Source</a>
+                    </div>
+                <% } %>
+
+                <div style="display: flex; gap: 1rem;">
+                    <a href="/game" class="btn btn-primary">Next Post</a>
+                    <a href="/register" class="btn btn-outline">Save Progress</a>
+                </div>
+            <% } %>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <img src="/linkedOUT.png" width="200" style="opacity: 0.5;">
+        </div>
+    </div>
+
     <%- include('common/footer') %>
 </body>
 </html>

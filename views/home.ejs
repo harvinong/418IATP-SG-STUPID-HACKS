@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LinkedOUT: are you fr??</title>
-    <link rel="stylesheet" href="../public/style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <div style="display: flex; justify-content: center;">
-        <%- include('common/header') %>
-    </div>
+    <%- include('common/header') %>
     
-    <div style="display: flex; justify-content: center; align-items: center;">
-            <div style="text-align: center;">
-            <h1>LinkedOUT: are you fr??</h1>
-            <p>Welcome to LinkedOUT! A game where you attempt to guess whether a linkedIn post is fake or genuinely batshit insane.</p>
-                <a href="/game">Play Game Now!</a><br>
-                <a href="/login">Login</a></li><br>
-                <a href="/register">Register</a>
-                <br><br>
-                <img src="linkedOUT.png" width="500">
-            <%- include('common/footer') %>
+    <div class="container" style="text-align: center; margin-top: 4rem;">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">LinkedOUT: are you fr??</h1>
+        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem;">
+            A game where you attempt to guess whether a LinkedIn post is fake or genuinely batshit insane.
+        </p>
+        
+        <div style="margin-bottom: 3rem;">
+            <a href="/game" class="btn btn-primary" style="font-size: 1.2rem; padding: 1rem 2.5rem;">Play Game Now!</a>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem;">
+            <a href="/login" class="btn btn-outline">Login</a>
+            <a href="/register" class="btn btn-outline">Register</a>
+        </div>
+
+        <div class="card" style="display: inline-block; padding: 1rem;">
+            <img src="/linkedOUT.png" alt="LinkedOUT Logo" style="max-width: 100%; height: auto; border-radius: var(--radius);">
         </div>
     </div>
+
+    <%- include('common/footer') %>
 </body>
 </html>

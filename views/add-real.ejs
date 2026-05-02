@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add a Real Post</title>
+    <title>Add a Real Post | LinkedOUT</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <%- include('common/header') %>
-    <h1>Add a Real Post</h1>
-    <form action="add-real" method="post">
-        <label>
-            Link to the post :
-            <input type="text" name="link">
-        </label>
-        <br>
-        <button type="submit">Sumbit Real Post</button>
-    </form>
+    
+    <div class="container">
+        <div class="card">
+            <h1>Add a Real Post</h1>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Link to a real post that is so wild it should be fake.</p>
+            
+            <form action="add-real" method="post">
+                <div class="form-group">
+                    <label for="link">LinkedIn URL</label>
+                    <input type="text" name="link" id="link" placeholder="https://www.linkedin.com/posts/...">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit Real Post</button>
+            </form>
+        </div>
+    </div>
+
     <%- include('common/footer') %>
 </body>
 </html>

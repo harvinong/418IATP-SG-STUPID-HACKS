@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add a Fake Post</title>
+    <title>Add a Fake Post | LinkedOUT</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <%- include('common/header') %>
-    <h1>Add a Fake Post</h1>
-    <form action="add-fake" method="post">
-        <label>
-            Text for post
-            <textarea name="text" id=""></textarea>
-        </label>
-        <br>
-        <button type="submit">Sumbit Fake Post</button>
-    </form>
+    
+    <div class="container">
+        <div class="card">
+            <h1>Add a Fake Post</h1>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Create a post that sounds like typical LinkedIn brainrot.</p>
+            
+            <form action="add-fake" method="post">
+                <div class="form-group">
+                    <label for="text">Post Text</label>
+                    <textarea name="text" id="text" placeholder="I once saw a squirrel and it taught me everything about B2B sales..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit Fake Post</button>
+            </form>
+        </div>
+    </div>
+
     <%- include('common/footer') %>
 </body>
 </html>
