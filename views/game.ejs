@@ -6,6 +6,8 @@
     <title>Game</title>
 </head>
 <body>
+    <%- include('common/header') %>
+    
     <h1>Game</h1>
     <p>You have <%= playerStats.points %> point<%= playerStats.points == 1? '': 's' %>!</p>
     <fieldset>
@@ -22,5 +24,7 @@
     <% } else if (outcome === 'fail') { %>
         <p style="color: red;">You're cooked! 🥀🥀🥀</p>
     <% } %>
+
+    <%- include('common/footer') %>
 </body>
 </html>

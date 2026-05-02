@@ -1,0 +1,17 @@
+<%# Variables %>
+<% const pagelink = {
+    Home: "/",
+    "Play Game": "/game/",
+    "Add Fake Post": "/game/add-fake",
+} %>
+
+<%# HTML Elements %>
+<header>
+    <nav>
+         | 
+        <% for (const page in pagelink) { %>
+            <a href="<%= pagelink[page] %>"><%= page %></a> | 
+        <% } %>
+    </nav>
+    <hr>
+</header>

@@ -4,9 +4,13 @@
     <title>Login</title>
 </head>
 <body>
+    <%- include('common/header') %>
+
     <form action="/login" method="POST">
         <input type="text" name="username" placeholder="Username">
         <input type="text" name="password" placeholder="Password">
     </form>
+
+    <%- include('common/footer') %>
 </body>
 </html>
